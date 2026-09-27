@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #f7f1e6;
+  --ink: #26190f;
+  --clay: #a96038;
+}
+
+html {
+  background: var(--cream);
+  scrollbar-width: thin;
+  scrollbar-color: #c9b797 var(--cream);
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: Inter, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+.font-display {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+/* ——— soft blush scrollbar ——— */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f7f1e6;
+}
+::-webkit-scrollbar-thumb {
+  background: #d8c6a8;
+  border-radius: 999px;
+  border: 2px solid #f7f1e6;
+  transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a96038;
+}
+
+::selection {
+  background: rgba(169, 96, 56, 0.22);
+  color: #26190f;
+}
+
+canvas {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.eyebrow {
+  letter-spacing: 0.35em;
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* hairline rule */
+.rule {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(38, 25, 15, 0.25), transparent);
+}
+
+/* film grain — warm, ultra subtle */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 70;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* slow ken-burns for hero image */
+@keyframes kenburns {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.animate-kenburns {
+  animation: kenburns 2.4s ease-out forwards;
+}
+
+/* scroll hint float */
+@keyframes float-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.4;
+  }
+}
+.animate-float-hint {
+  animation: float-hint 2.4s ease-in-out infinite;
+}
+
+/* image reveal wipe */
+.img-wipe {
+  clip-path: inset(0 0 0 0);
+}
